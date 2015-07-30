@@ -28,12 +28,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Super Song"/>
+                android:text="Super Song"
+                android:id="@+id/tv_currentSong"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cool Artist"/>
+                android:text="Cool Artist"
+                android:id="@+id/tv_currentArtist"/>
 
         </LinearLayout>
 

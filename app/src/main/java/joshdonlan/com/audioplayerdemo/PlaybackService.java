@@ -144,18 +144,17 @@ public class PlaybackService extends Service implements MediaPlayer.OnPreparedLi
         PendingIntent playPending = PendingIntent.getService(this,0,playpauseIntent,0);
         PendingIntent openPending = PendingIntent.getService(this, 0, openplayerIntent, 0);
 
-        startForeground(0x0102,
-            new NotificationCompat.Builder(this)
-                    .setSmallIcon(R.drawable.ic_headphone)
-                    .setContentTitle(_song.getmTitle())
-                    .setContentText(_song.getmArtist())
-                    .setLargeIcon(_song.getmCover())
-                    .setAutoCancel(false)
-                    .setContentIntent(openPending)
-                    .addAction(android.R.drawable.ic_media_previous, null, previousPending)
-                    .addAction(android.R.drawable.ic_media_play, null, playPending)
-                    .addAction(android.R.drawable.ic_media_next, null, nextPending).build()
-        );
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.ic_headphone)
+                .setContentTitle(_song.getmTitle())
+                .setContentText(_song.getmArtist())
+                .setLargeIcon(_song.getmCover())
+                .setAutoCancel(false)
+                .setContentIntent(openPending)
+                .addAction(android.R.drawable.ic_media_previous, null, previousPending)
+                .addAction(android.R.drawable.ic_media_play, null, playPending)
+                .addAction(android.R.drawable.ic_media_next, null, nextPending);
+        ((NotificationManager) getSystemService(NOTIFICATION_SERVICE)).notify(0x0101,builder.build());
 
 
         try {

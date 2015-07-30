@@ -1,17 +1,15 @@
 package joshdonlan.com.audioplayerdemo.objects;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import joshdonlan.com.audioplayerdemo.R;
 
@@ -20,8 +18,13 @@ import joshdonlan.com.audioplayerdemo.R;
  */
 public class SongAdapter extends BaseAdapter {
 
-    private Context mContext;
-    private List<Song> mSongs;
+    private static final String TAG = "SongAdapter";
+    protected Context mContext;
+    protected ArrayList<Song> mSongs;
+
+    public interface SongPopupListener{
+        public void showPopup(View _view, int _position);
+    }
 
     public SongAdapter(Context _context, ArrayList<Song> _songs){
         mContext = _context;
@@ -45,7 +48,6 @@ public class SongAdapter extends BaseAdapter {
 
     @Override
     public View getView(int _position, View _convertView, ViewGroup _parent) {
-
         ViewHolder holder;
 
         if(_convertView == null){
@@ -59,24 +61,22 @@ public class SongAdapter extends BaseAdapter {
         holder.getArtist().setText(mSongs.get(_position).getmArtist());
         holder.getSong().setText(mSongs.get(_position).getmTitle());
         holder.getCover().setImageBitmap(mSongs.get(_position).getmCover());
+        holder.getMenu().setTag(_position);
 
-        holder.getMenu().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PopupMenu popup = new PopupMenu(mContext, v);
-                MenuInflater inflater = popup.getMenuInflater();
-                inflater.inflate(R.menu.item_list_song_menu, popup.getMenu());
-                popup.show();
-            }
-        });
 
+        holder.getMenu().setOnClickListener(buildClickListener());
         return _convertView;
     }
 
     public void update(ArrayList<Song> _songs){
         mSongs.clear();
-        mSongs = _songs;
+        mSongs = new ArrayList<Song>(_songs);
+        Log.i(TAG, "Updating List Content with Songs: " + mSongs);
         this.notifyDataSetChanged();
+    }
+
+    protected View.OnClickListener buildClickListener(){
+        return  null;
     }
 
     static class ViewHolder{
@@ -106,5 +106,8 @@ public class SongAdapter extends BaseAdapter {
         }
 
         public ImageView getMenu() { return mMenu; }
+
     }
+
+
 }

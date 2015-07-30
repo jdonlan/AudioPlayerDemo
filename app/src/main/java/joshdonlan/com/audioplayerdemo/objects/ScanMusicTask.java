@@ -66,9 +66,9 @@ public class ScanMusicTask extends AsyncTask<Void, Void, ArrayList<Song>> {
             String artist = meta.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
             String album = meta.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
             String title = meta.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
-            byte[] art = meta.getEmbeddedPicture();
-            Bitmap cover = BitmapFactory.decodeByteArray(art, 0, art.length);
-            Song song = new Song(artist, title, album, cover);
+            String duration = meta.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+            byte[] cover = meta.getEmbeddedPicture();
+            Song song = new Song(artist, title, album, cover, file.getPath(), duration);
             songs.add(song);
         }
 

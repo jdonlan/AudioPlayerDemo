@@ -18,6 +18,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name=".PlaybackService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="joshdonlan.com.audioplayerdemo.INTENT_PREVIOUS"></action>
+                <action android:name="joshdonlan.com.audioplayerdemo.INTENT_NEXT"></action>
+                <action android:name="joshdonlan.com.audioplayerdemo.INTENT_PLAYPAUSE"></action>
+                <action android:name="joshdonlan.com.audioplayerdemo.INTENT_OPENPLAYER"></action>
+            </intent-filter>
+
+        </service>
     </application>
 
 </manifest>

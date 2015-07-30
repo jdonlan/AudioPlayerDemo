@@ -10,4 +10,6 @@
     <string name="menu_play_next">Play Next</string>
     <string name="menu_add_queue">Add to Queue</string>
 
+    <string name="toast_cannot_connect_to_service">Unable to connect to music playback service.</string>
+
 </resources>
