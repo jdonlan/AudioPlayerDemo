@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">AudioPlayerDemo</string>
+
+    <string name="title_activity_main">Music Player</string>
+    <string name="title_section1">Library</string>
+    <string name="title_section2">Playlist</string>
+
+    <string name="dialog_update_song">Updating Library…</string>
+
+    <string name="menu_play_next">Play Next</string>
+    <string name="menu_add_queue">Add to Queue</string>
+
+</resources>

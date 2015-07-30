@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="tag_fragment_library">TAG_LIBRARY</string>
+    <string name="tag_fragment_playlist">TAG_PLAYLIST</string>
+
+</resources>
